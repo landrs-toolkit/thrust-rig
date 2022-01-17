@@ -115,7 +115,7 @@ while True:
         pi.stop()
         print("Motor has stopped\n")
         print("Done_Completely")
-        file = open("Tcolumns_1.csv", "w", encoding='UTF8', newline='')
+        file = open("Thrust_Values.csv", "w", encoding='UTF8', newline='')
         writer = csv.writer(file)
         for w in range(len(buses)):
             writer.writerow([buses[w], Tvals[w]])
