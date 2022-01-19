@@ -25,6 +25,11 @@ ii)   GND to Raspberry Pi Pin 6 (GND)
 iii)  DT to Raspberry Pi Pin 29 (GPIO 5)
 
 iv)   SCK to Raspberry Pi Pin 31 (GPIO 6)
+
+### Connecting the ESC to the Raspberry Pi
+i) 
+
+ii) 
 ## Installation
 
 
