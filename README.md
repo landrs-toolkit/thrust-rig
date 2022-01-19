@@ -25,8 +25,16 @@ $git clone https://github.com/RogeK/Thrust_Rig.git
 ```
 
 ## Running the files
+Navigate to the src directory
 
-In the src directory, run the command below
+The mass of the motor and the propeller may affect the accuracy of your reading. To prevent this, run the example.py file and press the push button. The value of the readings will be set to 0.
+
+To run the example.py file, run the command below
+```bash
+python3 example.py
+```
+Once the value of the readings have been set to 0, exit the program by pressing ctrl + c keys. You can now start testing the thrust of the motor by running the command below
+
 ```bash
 python3 start.py
 ```
