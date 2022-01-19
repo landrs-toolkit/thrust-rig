@@ -27,18 +27,19 @@ iii)  DT to Raspberry Pi Pin 29 (GPIO 5)
 iv)   SCK to Raspberry Pi Pin 31 (GPIO 6)
 
 ### Connecting the ESC to the Raspberry Pi
-i) 
+Note: Do not connect the 5v pin to the Raspberry PI
+i) Black pin to GND
 
-ii) 
-## Installation
+ii) Yellow Pin to Pi Pin 7 (GPIO 4)
 
+### Connecting the ESC to the Motor
 
+## Running the files
 Clone the repository using the command below
 ```bash
 $git clone https://github.com/RogeK/Thrust_Rig.git
 ```
 
-## Running the files
 Navigate to the src directory
 
 The mass of the motor and the propeller may affect the accuracy of your reading. To prevent this, run the example.py file and press the push button. The value of the readings will be set to 0.
