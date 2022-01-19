@@ -111,12 +111,14 @@ while True:
         sleep(0.1)
     except(KeyboardInterrupt, SystemExit):
         speed = 0
+        now = datetime.datetime.now()
         pi.set_servo_pulsewidth(ESC_GPIO,0)
         pi.stop()
         print("Motor has stopped\n")
         print("Done_Completely")
-        file = open("Thrust_Values.csv", "w", encoding='UTF8', newline='')
+        file = open("Thrust_Values.csv", "a", encoding='UTF8', newline='')
         writer = csv.writer(file)
+        writer.writerow(now.strftime("%Y-%m-%d %H:%M:%S"))
         for w in range(len(buses)):
             writer.writerow([buses[w], Tvals[w]])
         file.close()
