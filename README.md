@@ -16,6 +16,15 @@ vi)  Electronic Speed Controllers
 
 vii) Push Button
 
+## Assembling the hardware
+### Connecting the HX711 Weight Sensor Module to Raspberry Pi
+i)    VCC to Raspberry Pi Pin 2 (5V)
+ 
+ii)   GND to Raspberry Pi Pin 6 (GND)
+
+iii)  DT to Raspberry Pi Pin 29 (GPIO 5)
+
+iv)   SCK to Raspberry Pi Pin 31 (GPIO 6)
 ## Installation
 
 
