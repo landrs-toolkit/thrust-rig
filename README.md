@@ -34,6 +34,34 @@ ii) Yellow Pin to Pi Pin 7 (GPIO 4)
 
 ### Connecting the ESC to the Motor
 
+## Connecting to raspberry pi via shh
+
+### Installing raspberry pi imager
+
+i)    visit https://www.raspberrypi.org/downloads 
+
+ii)   Download the Raspberry Pi Imager installer for your Operating System and run installer
+
+iii)  Launch Raspberry Pi Imager and choose raspberry pi OS
+
+iv)   click the settings(advanced options) icon and to the following- enable ssh,set username or password for the pi, (in our case password is "drone" but    can be customized,configure wireless LAN (network youll be connecting your pi to)the ssid and password must match your wireless network and click save.
+
+v)   choose SD CARD under storage & click write
+
+### ssh into raspberry pi
+
+i)    make sure your computer and raspberry are connected to the same network
+
+ii)   in command line use the command below to reach your raspberry via ssh
+```bash
+ssh pi@raspberrypi.local
+```
+iii) when prompted for password enter password you setup initially in the pi imager (in this case my password is "drone")
+
+iv) voila you're have successfully got into the raspberry pi :).
+
+
+
 ## Running the files
 Clone the repository using the command below
 ```bash
