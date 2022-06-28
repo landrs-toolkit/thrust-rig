@@ -36,9 +36,11 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(push_button, GPIO.IN)
 GPIO.setup(push_button, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(LED_Light, GPIO.OUT)
+GPIO.output(LED_Light, 1)
 
 def Turn_LED_ON():
     if GPIO.input(push_button):
+       # print("LED PRESSED")
         time.sleep(0.25)
         if GPIO.input(push_button):
             hx.tare()
@@ -90,6 +92,8 @@ while True:
         # Prints the weight. Comment if you're debbuging the MSB and LSB issue.
         val = hx.get_weight(5)
         #Turn_LED_ON()
+        #i removed comment above
+
         #val = round(val,2)
         val = round(val,0)
         Tvals.append(val)
@@ -97,13 +101,17 @@ while True:
         buses.append(i)
         #hx.tare()
         if GPIO.input(push_button):
+            #print("button pushed")
             time.sleep(0.25)
             if GPIO.input(push_button):
-                GPIO.output(LED_Light, GPIO.HIGH)
-               # hx.tare()
+                #print("LED LOW")
+                GPIO.output(LED_Light, GPIO.LOW)
+                #hx.tare()
+                #i changed tare from comment and swicthe the led low and high above and below
         else:
-            GPIO.output(LED_Light, GPIO.LOW)
+            GPIO.output(LED_Light, GPIO.HIGH)
             hx.tare()
+            #commented out tatre() above
         #pass
 
         # To get weight from both channels (if you have load cells hooked up
