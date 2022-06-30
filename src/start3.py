@@ -121,7 +121,7 @@ def control():
 
 
     time.sleep(1)
-    speed = min_value
+    speed = Min_Value
     print ("a : decrease speed & d : increase speed | q : decrease A lot & e : increase A lot")
     while True:
         if(GPIO.input(push_button)):
