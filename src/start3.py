@@ -107,7 +107,7 @@ def weight():
     val = hx.get_weight(5)
     val = round(val,0)
     Tvals.append(val)
-    print " weight(g) =" % val
+    print ("weight(g) =" % val)
     buses.append(i)
     i=i+1
     hx.power_down()
@@ -139,28 +139,28 @@ def control():
         
         if inp == "q":
             speed -= 100    
-            print "Throttle speed = %d" % speed
+            print ("Throttle speed = %d" % speed)
             weight()
 
         elif inp == "e":    
             speed += 100    
-            print "Throtle speed = %d" % speed
+            print ("Throtle speed = %d" % speed)
             weight()
 
         elif inp == "d":
             speed += 10     
-            print "Throttle speed = %d" % speed
+            print ("Throttle speed = %d" % speed)
             weight()
 
         elif inp == "a":
             speed -= 10     
-            print "Throttle speed = %d" % speed
+            print ("Throttle speed = %d" % speed)
             weight()
         elif inp == "stop":
             stop()          
             break
         else:
-            print "Press a,q,d or e"
+            print ("Press a,q,d or e")
       
 def stop(): 
     #for E in Count_ESC:

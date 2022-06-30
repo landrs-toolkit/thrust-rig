@@ -99,7 +99,7 @@ while True:
         if inp == "q":
             speed -= 100
             print "throttle speed = %d" % speed
-             sleep(5)
+            sleep(5)
             print(speed)
             for j in range(10):
                 val = hx.get_weight(5)
