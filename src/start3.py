@@ -41,6 +41,7 @@ def cleanAndExit():
 
 hx = HX711(5, 6)
 push_button = 18
+ESC = 4 
 LED_Light = 23
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(push_button, GPIO.IN)
@@ -77,7 +78,6 @@ Min_Value = input("Enter the Min Throttle value\n")
 Max_Value = int(Max_Value)
 Min_Value = int(Min_Value)
 
-ESC = 4
 
 print("please disconnect battery.. then press cal")
                 
@@ -85,13 +85,13 @@ def calibrate():
      
     pi.set_servo_pulsewidth(ESC, 0)
     time.sleep(1)
-    pi.set_servo_pulsewidth(ESC, max_value)
+    pi.set_servo_pulsewidth(ESC, Max_Value)
 
     print("Connect battery.. then press Enter")
-    inp = raw_input()
+    inp = input()
     if inp == '': 
         
-        pi.set_servo_pulsewidth(ESC, min_value)   
+        pi.set_servo_pulsewidth(ESC, Min_Value)   
         time.sleep(7)
         time.sleep (5)        
         
@@ -99,7 +99,7 @@ def calibrate():
         time.sleep(2) 
         print ("Arming...")
         
-        pi.set_servo_pulsewidth(ESC, min_value)
+        pi.set_servo_pulsewidth(ESC, Min_Value)
         time.sleep(1)
         control()
    
@@ -135,7 +135,7 @@ def control():
 
         #for E in Count_ESC:
         pi.set_servo_pulsewidth(ESC, speed)
-        inp = raw_input()
+        inp = input()
         
         if inp == "q":
             speed -= 100    
@@ -178,7 +178,7 @@ def stop():
     cleanAndExit()
 
   
-inp = raw_input()
+inp = input()
 
 if inp == "cal":
     calibrate()
