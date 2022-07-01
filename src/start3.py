@@ -102,14 +102,31 @@ def calibrate():
         pi.set_servo_pulsewidth(ESC, Min_Value)
         time.sleep(1)
         control()
+
+def cleanAndExit():
+    print("cleaning...")
+    if not EMULATE_HX711:
+        GPIO.cleanup()
+        print("Just hx711")
+    print("Bye!")
+    sys.exit()
+
    
 def weight():
-    val = hx.get_weight(5)
-    val = round(val,0)
-    Tvals.append(val)
-    print ("weight(g) =" % val)
-    buses.append(i)
-    i=i+1
+
+    Tvals = []
+    buses = []
+    i=0
+
+    for j in range(10):
+
+        val = hx.get_weight(5)
+        val = round(val,0)
+        Tvals.append(val)
+        print (val)
+        buses.append(i)
+        i=i+1
+
     hx.power_down()
     hx.power_up()
     sleep(0.1)
@@ -185,3 +202,4 @@ if inp == "cal":
 
 elif inp == "stop":
     stop()
+
