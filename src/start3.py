@@ -117,6 +117,7 @@ def weight():
     Tvals = []
     buses = []
     i=0
+    global val
 
     for j in range(10):
 
@@ -135,6 +136,8 @@ def weight():
 
 def control(): 
 
+    global speed
+
 
 
     time.sleep(1)
@@ -151,6 +154,7 @@ def control():
 
 
         #for E in Count_ESC:
+
         pi.set_servo_pulsewidth(ESC, speed)
         inp = input()
         
@@ -163,6 +167,17 @@ def control():
             speed += 100    
             print ("Throtle speed = %d" % speed)
             weight()
+            time.sleep(5)
+    
+            while inp =="e":
+                if inp == "":
+                    weight()
+                time.sleep(2)
+
+            else:
+                print ("press a,q,d or e")
+                        
+
 
         elif inp == "d":
             speed += 10     
@@ -178,7 +193,9 @@ def control():
             break
         else:
             print ("Press a,q,d or e")
-      
+
+
+
 def stop(): 
     #for E in Count_ESC:
     pi.set_servo_pulsewidth(ESC, 0)
