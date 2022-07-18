@@ -13,7 +13,7 @@ time.sleep(1)
 import pigpio 
 
 
-pi = pigpio.pi();
+pi = pigpio.pi()
 
 
 EMULATE_HX711=False
@@ -82,24 +82,32 @@ Min_Value = int(Min_Value)
 print("please disconnect battery.. then press cal")
                 
 def calibrate():   
-     
+    #pi.set_PWM_dutycycle(ESC, 128)
+    pi.set_PWM_frequency(ESC,350000)
+    print(pi.get_PWM_frequency(ESC))
+    #print(pi.get_PWM_dutycycle(ESC))
     pi.set_servo_pulsewidth(ESC, 0)
     time.sleep(1)
     pi.set_servo_pulsewidth(ESC, Max_Value)
+    
 
     print("Connect battery.. then press Enter")
     inp = input()
     if inp == '': 
         
-        pi.set_servo_pulsewidth(ESC, Min_Value)   
-        time.sleep(7)
+        pi.set_servo_pulsewidth(ESC, Min_Value)  
+       # print(pi.get_PWM_frequency(ESC))
+       # time.sleep(7)
+
         time.sleep (5)        
         
-        pi.set_servo_pulsewidth(ESC, 0)           
+        pi.set_servo_pulsewidth(ESC, 0)   
+       # print(pi.get_PWM_frequency(ESC))
         time.sleep(2) 
         print ("Arming...")
         
         pi.set_servo_pulsewidth(ESC, Min_Value)
+        #print(pi.get_PWM_frequency(ESC))
         time.sleep(1)
         control()
 
@@ -156,37 +164,38 @@ def control():
         #for E in Count_ESC:
 
         pi.set_servo_pulsewidth(ESC, speed)
+        #print("in control")
+        #print(pi.get_PWM_frequency(ESC))
         inp = input()
         
         if inp == "q":
             speed -= 100    
             print ("Throttle speed = %d" % speed)
+            print(pi.get_PWM_frequency(ESC))
             weight()
+            #print(pi.get_PWM_dutycycle(ESC)
+            
 
         elif inp == "e":    
             speed += 100    
             print ("Throtle speed = %d" % speed)
+            print(pi.get_PWM_frequency(ESC))
+            #print(pi.get_PWM_dutycycle(ESC)
             weight()
-            time.sleep(5)
-    
-            while inp =="e":
-                if inp == "":
-                    weight()
-                time.sleep(2)
-
-            else:
-                print ("press a,q,d or e")
-                        
-
-
+                   
         elif inp == "d":
             speed += 10     
             print ("Throttle speed = %d" % speed)
+            print(pi.get_PWM_frequency(ESC))
+            #print(pi.get_PWM_dutycycle(ESC)
+            #
             weight()
 
         elif inp == "a":
             speed -= 10     
             print ("Throttle speed = %d" % speed)
+            print(pi.get_PWM_frequency(ESC))
+            #print(pi.get_PWM_dutycycle(ESC)
             weight()
         elif inp == "stop":
             stop()          
@@ -199,16 +208,17 @@ def control():
 def stop(): 
     #for E in Count_ESC:
     pi.set_servo_pulsewidth(ESC, 0)
+    GPIO.cleanup()
     pi.stop()
     print("drone propeller motor has stopped\n")
     print("Done Completely")
 
-    file = open("Thrust_Values.csv", "a", encoding='UTF8', newline='')
-    writer = csv.writer(file)
-    writer.writerow(now.strftime("%Y-%m-%d %H:%M:%S"))
-    for w in range(len(buses)):
-        writer.writerow([buses[w], Tvals[w]])
-    file.close()
+    #file = open("Thrust_Values.csv", "a", encoding='UTF8', newline='')
+    #writer = csv.writer(file)
+    #writer.writerow(now.strftime("%Y-%m-%d %H:%M:%S"))
+    #for w in range(len(buses)):
+       # writer.writerow([buses[w], Tvals[w]])
+    #file.close()
     cleanAndExit()
 
   
