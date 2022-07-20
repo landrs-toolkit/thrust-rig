@@ -71,7 +71,7 @@ buses = []
 i=0
 
 pi.set_servo_pulsewidth(ESC, 0) 
-
+#print(pi.get_PWM_dutycycle(ESC))
 Max_Value = input("Enter the Max Throttle value\n")
 Min_Value = input("Enter the Min Throttle value\n")
 
@@ -83,9 +83,9 @@ print("please disconnect battery.. then press cal")
                 
 def calibrate():   
     #pi.set_PWM_dutycycle(ESC, 128)
-    pi.set_PWM_frequency(ESC,350000)
+    pi.set_PWM_frequency(ESC,2000)
     print(pi.get_PWM_frequency(ESC))
-    #print(pi.get_PWM_dutycycle(ESC))
+    #print(pi.get_PWM_dutycycle(21))
     pi.set_servo_pulsewidth(ESC, 0)
     time.sleep(1)
     pi.set_servo_pulsewidth(ESC, Max_Value)
@@ -108,8 +108,12 @@ def calibrate():
         
         pi.set_servo_pulsewidth(ESC, Min_Value)
         #print(pi.get_PWM_frequency(ESC))
+       # print(pi.get_PWM_dutycycle(ESC))
         time.sleep(1)
         control()
+
+def get_dutycycle():
+    print(pi.get_PWM_dutycycle(ESC))
 
 def cleanAndExit():
     print("cleaning...")
@@ -127,7 +131,7 @@ def weight():
     i=0
     global val
 
-    for j in range(10):
+    for j in range(15):
 
         val = hx.get_weight(5)
         val = round(val,0)
@@ -164,6 +168,11 @@ def control():
         #for E in Count_ESC:
 
         pi.set_servo_pulsewidth(ESC, speed)
+
+        if speed > Max_Value:
+            stop()
+            print("exceeded max throttle...Goodbye :)")
+            break
         #print("in control")
         #print(pi.get_PWM_frequency(ESC))
         inp = input()

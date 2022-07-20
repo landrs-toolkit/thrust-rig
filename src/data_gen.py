@@ -93,7 +93,7 @@ while True:
         #val = round(val,2)
         val = round(val,0)
         Tvals.append(val)
-        #print(val)
+        print(val)
         buses.append(i)
         #hx.tare()
         if GPIO.input(push_button):
@@ -116,7 +116,7 @@ while True:
         hx.power_up()
         time.sleep(0.1)
 
-    except (KeyboardInterrupt, SystemExit):
+   # except (KeyboardInterrupt, SystemExit):
         #print(Tvals)
         #print("buses")
         #print(buses)
