@@ -51,7 +51,7 @@ python3 example.py
 Once the value of the readings have been set to 0, exit the program by pressing ctrl + c keys. You can now start testing the thrust of the motor by running the command below
 
 ```bash
-python3 start.py
+python3 start3.py
 ```
 The thrust values are written to the Thrust_Values.csv file in the src directory
 
